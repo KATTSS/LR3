@@ -45,7 +45,7 @@ int work() {
 
 int main() {
     bool exit=false;
-    int num;
+    auto num=4;
 
    /* std::cout << "Добро пожаловать в контекстное меню, \nдля выполнения действия введите соответствующую цифру: " << std::endl;
     std::cout << "Запуск программы - 1" << std::endl;
@@ -56,6 +56,13 @@ int main() {
         menu();
 
         std::cin >> num;
+
+        while (std::cin.fail()){
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Введите значение повторно:";
+            std::cin >> num;
+            }
         
         switch (num) {
             case 1 : work();
@@ -67,6 +74,10 @@ int main() {
             
             case 3: 
             exit=true;
+            break;
+
+            default: std::cout << "Введите значение повторно"<< std::endl;
+            
         }
     }
     
