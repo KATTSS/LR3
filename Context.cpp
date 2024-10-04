@@ -28,8 +28,6 @@ int work() {
         N=N+s;
         ++i;
 
-         std::cout << "N=" << N << std::endl;
-
     }
 
     std::cout << "N=" << N << std::endl;
