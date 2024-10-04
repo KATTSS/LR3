@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-using namespace std;
 
 void menu() {
     
@@ -45,27 +44,27 @@ int main() {
         menu();
 
         int x;
-        string s;
+        std::string s;
 
         do {
-            cout<<"Введите номер желаемой операции: ";
-            getline(cin, s);
-        } while (s.find_first_not_of("01234") != string::npos);
+            std::cout<<"Введите номер желаемой операции: ";
+            std::getline(std::cin, s);
+        } while (s.find_first_not_of("01234") != std::string::npos);
         try {
             x=stoi(s);
         }
         catch (std::invalid_argument& e) {
-            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+            std::cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
         }
         catch (std::out_of_range& e) {
-            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+            std::cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
         }
         catch (...) {
-            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+            std::cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
         }
 
         switch (x) {
-            case 0 : cout<< "Будьте вниметельнее!!!\n";
+            case 0 : std::cout<< "Будьте вниметельнее!!!\n";
             break; 
 
             case 1 : work();
