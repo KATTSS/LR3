@@ -1,20 +1,15 @@
 #include <iostream>
 #include <cmath>
+#include <string>
+using namespace std;
 
 void menu() {
-   // system("cls");
-    std::cout << "Запуск программы - 1" << std::endl;
+    
+    std::cout << "\nЗапуск программы - 1" << std::endl;
     std::cout << "Кто выполнил задание? - 2" << std::endl;
-    std::cout << "Выход из программы - 3" << std::endl;
-    std::cout << "Введите номер желаемого действия:" << std::endl;
+    std::cout << "Суть программы - 3" << std::endl;
+    std::cout << "Завершить программу - 4\n" << std::endl;
 }
-
-/*int getoption(int num) {
-            int num;
-            string s;
-            getline( cin, s);
-        }
-*/
 
 int work() {
     float a, b, s;
@@ -45,26 +40,34 @@ int work() {
 
 int main() {
     bool exit=false;
-    auto num=4;
-
-   /* std::cout << "Добро пожаловать в контекстное меню, \nдля выполнения действия введите соответствующую цифру: " << std::endl;
-    std::cout << "Запуск программы - 1" << std::endl;
-    std::cout << "Кто выполнил задание? - 2" << std::endl;
-    std::cout << "Выход из программы - 3" << std::endl;*/
-
+   
     while (!exit) {
         menu();
 
-        std::cin >> num;
+        int x;
+        string s;
 
-        while (std::cin.fail()){
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Введите значение повторно:";
-            std::cin >> num;
-            }
-        
-        switch (num) {
+        do {
+            cout<<"Введите номер желаемой операции: ";
+            getline(cin, s);
+        } while (s.find_first_not_of("01234") != string::npos);
+        try {
+            x=stoi(s);
+        }
+        catch (std::invalid_argument& e) {
+            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+        }
+        catch (std::out_of_range& e) {
+            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+        }
+        catch (...) {
+            cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
+        }
+
+        switch (x) {
+            case 0 : cout<< "Будьте вниметельнее!!!\n";
+            break; 
+
             case 1 : work();
             break;
 
@@ -73,10 +76,15 @@ int main() {
             break;
             
             case 3: 
+            std::cout << "Вычисление функции N(i)" << std::endl;
+            break;
+            
+            case 4:
             exit=true;
             break;
+            
 
-            default: std::cout << "Введите значение повторно"<< std::endl;
+            //default: std::cout << "Введите значение повторно"<< std::endl;
             
         }
     }
