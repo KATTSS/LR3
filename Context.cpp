@@ -47,8 +47,8 @@ int main() {
         do {
             std::cout<<"Введите номер желаемой операции: ";
             std::getline(std::cin, s);
-        } while (s.find_first_not_of("01234") != std::string::npos);
-        try {
+        } while (s.find_first_not_of("01234") != std::string::npos || x<0 || x>4);
+       /*try {
             x=stoi(s);
         }
         catch (std::invalid_argument& e) {
@@ -60,7 +60,7 @@ int main() {
         catch (...) {
             std::cout<< "\nВведено некорректно, повторите ввод\n"; x=0;
         }
-
+*/
         switch (x) {
             case 0 : std::cout<< "Будьте вниметельнее!!!\n";
             break; 
